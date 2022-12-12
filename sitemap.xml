@@ -39,13 +39,6 @@
     </url>
 
     <url>
-        <loc>https://ateamroofingandconstructiontx.com/service-Roofing-Installation</loc>
-        <lastmod>2022-12-12</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-    </url>
-
-    <url>
         <loc>https://ateamroofingandconstructiontx.com/service-Roofing-Repairs</loc>
         <lastmod>2022-12-12</lastmod>
         <changefreq>weekly</changefreq>
@@ -68,6 +61,13 @@
 
     <url>
         <loc>https://ateamroofingandconstructiontx.com/service-Outdoor-Patios</loc>
+        <lastmod>2022-12-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <url>
+        <loc>https://ateamroofingandconstructiontx.com/service-Roofing-Installation</loc>
         <lastmod>2022-12-12</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
