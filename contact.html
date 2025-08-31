@@ -209,59 +209,6 @@
                 
                 
                 
-                    
-                        <div
-    id="launch-site-banner"
-    x-data="{ scrolledFromTop: false }"
-    x-init="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false"
-    @scroll.window="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false"
-    :class="{'h-32': !scrolledFromTop, 'h-16': scrolledFromTop}"
-    class="fixed hidden inset-x-0 top-0 z-50 bg-orange-600 sm:h-16 transition-all duration-200"
-    data-heap-component-name="launch-site-banner"
-    data-heap-version="v2"
->
-    <div
-        :class="{'h-32': !scrolledFromTop, 'h-16': scrolledFromTop}"
-        class="relative transition-all duration-200"
-    >
-        <div
-            :class="{'h-32': !scrolledFromTop, 'h-16': scrolledFromTop}"
-            class="flex flex-col justify-center sm:flex-row sm:justify-between sm:h-16 w-4/5 items-start sm:items-center m-auto transition-all duration-200"
-        >
-            <div class="flex flex-row items-center">
-                <div class="hidden sm:flex mr-2 bg-orange-900 rounded-md p-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
-                    </svg>
-                </div>
-                <div
-                    :class="{'hidden': !scrolledFromTop, 'hidden': scrolledFromTop}"
-                    class="sm:flex text-white text-sm mb-3 sm:mb-0"
-                >
-                    
-
-                    Heath, you’re just a few clicks from going live! Don’t worry - we can still make edits after launching.
-
-                    
-                    bucks
-                </div>
-            </div>
-            <div class="flex flex-row items-center">
-                <a class="flex bg-white px-4 py-2 rounded-md text-orange-600 mr-4 text-sm" href="https://app.prophone.com/checkout?id=8830">
-                    Launch my site
-                </a>
-                <a id="contact-us-button" class="flex bg-white px-4 py-2 rounded-md text-orange-600 mr-4 text-sm" href="tel:8573653045">
-                    Contact Us
-                </a>
-                <a class="flex font-bold underline underline-offset-4 text-white text-sm" href="https://www.prophone.com/learn-more?id=8830">
-                    Learn more →
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-                    
-                
             
         
             
@@ -609,15 +556,15 @@
                     </div>
                     <div class="inline-flex w-full sm:w-auto">
                         
-                        <div onclick="postCtaClick('call')" class="inline-flex w-full sm:w-auto">
-                            <a
-                                target = "_blank" 
-                                href="tel:(832) 392-6986"
+                        <div class="inline-flex w-full sm:w-auto">
+                            <button
+                                data-phone="(832) 392-6986" 
+                                onclick="initiateCall(this); postCtaClick('call')"
                                 :class="{'scale-100': !scrolledFromTop, 'scale-100': scrolledFromTop}"
                                 class="cta_call_conversion inline-flex items-center justify-center w-full px-5 py-3 whitespace-nowrap text-base font-medium transition bg-white border-2 rounded-md  hover:bg-primary hover:bg-opacity-10 focus:outline-none focus:ring-2 ring-primary ring-opacity-75 ring-offset-2 sm:w-auto text-primary border-primary"
                                 >
                                 Call Now
-                            </a>
+                            </button>
                         </div>
                         
                     </div>
@@ -847,15 +794,15 @@
                                 
 
                                 
-                                <div onclick="postCtaClick('call')" class="w-full">
-                                    <a
-                                        target = "_blank"
-                                        href="tel:(832) 392-6986"
+                                <div class="w-full">
+                                    <button
+                                        data-phone="(832) 392-6986" 
+                                        onclick="initiateCall(this); postCtaClick('call')"
                                         :class="{'scale-100': !scrolledFromTop, 'scale-100': scrolledFromTop}"
                                         class="cta_call_conversion inline-flex items-center justify-center w-full px-5 py-3 text-base font-medium transition bg-white rounded-md  hover:bg-primary hover:bg-opacity-10 hover:text-white focus:outline-none focus:ring-2 text-primary my-2"
                                         >
                                         Call Now
-                                    </a>
+                                    </button>
                                 </div>
                                  
                             
@@ -997,14 +944,14 @@
                         
 
                         
-                        <div onclick="postCtaClick('call')" class="inline-flex w-full mt-3 sm:mt-0 sm:ml-3 sm:w-auto">
-                            <a
-                                    target="_blank"
-                                    href="tel:(832) 392-6986"
+                        <div class="inline-flex w-full mt-3 sm:mt-0 sm:ml-3 sm:w-auto">
+                            <button
+                                data-phone="(832) 392-6986" 
+                                onclick="initiateCall(this); postCtaClick('call')"
                                     class="cta_call_conversion inline-flex items-center justify-center w-full px-5 py-3 text-base font-medium transition bg-white rounded-md border-2 border-transparent sm:py-4 sm:px-10 hover:bg-gray-200 focus:outline-none ring-offset-2 focus:ring-2 ring-secondary ring-opacity-75 bg-red sm:w-auto text-secondary"
                             >
                                 Call Us
-                            </a>
+                        </button>
                         </div>
                         
                     </div>
@@ -1783,14 +1730,14 @@
             
 
             
-            <div onclick="postCtaClick('call')" class="inline-flex w-full mt-3 sm:mt-0 sm:ml-3 sm:w-auto">
-                <a
-                        target="_blank"
-                        href="tel:(832) 392-6986"
-                        class="cta_call_conversion inline-flex items-center justify-center w-full px-5 py-3 text-base font-medium transition bg-white border-2 rounded-md  sm:py-4 sm:px-10 hover:bg-primary hover:bg-opacity-10 focus:outline-none focus:ring-2 ring-primary ring-offset-2 ring-opacity-75 sm:w-auto text-primary border-primary"
-                        >
+            <div class="inline-flex w-full mt-3 sm:mt-0 sm:ml-3 sm:w-auto">
+                <button
+                    data-phone="(832) 392-6986" 
+                    onclick="initiateCall(this); postCtaClick('call')"
+                    class="cta_call_conversion inline-flex items-center justify-center w-full px-5 py-3 text-base font-medium transition bg-white border-2 rounded-md  sm:py-4 sm:px-10 hover:bg-primary hover:bg-opacity-10 focus:outline-none focus:ring-2 ring-primary ring-offset-2 ring-opacity-75 sm:w-auto text-primary border-primary"
+                >
                     Call Us
-                </a>
+                </button>
             </div>
             
         </div>
@@ -3901,14 +3848,14 @@ function filterGalleryByDataId(filter) {
             
                 
             
-            <div onclick="postCtaClick('call')" class="inline-flex w-full ml-3 sm:w-auto">
-                <a
-                    target = "_blank" 
-                    href="tel:(832) 392-6986"
+            <div class="inline-flex w-full ml-3 sm:w-auto">
+                <button
+                    data-phone="(832) 392-6986" 
+                    onclick="initiateCall(this); postCtaClick('call')"
                     class="cta_call_conversion inline-flex items-center justify-center w-full px-5 py-3 text-base font-medium transition bg-white border-2 rounded-md  sm:py-4 sm:px-10 hover:bg-primary hover:bg-opacity-10 focus:outline-none focus:ring-2 ring-primary ring-offset-2 ring-opacity-75 sm:w-auto text-primary border-primary"
                 >
                     Call Us
-                </a>
+                </button>
             </div>
             
         </div>
@@ -4373,7 +4320,7 @@ function filterGalleryByDataId(filter) {
                 </div>
                 <div id="error-state-modal" style="padding-left: 24px; padding-right: 24px;"></div>
 
-                <form id="contactModal" class="flex flex-col flex-grow overflow-hidden sm:w-full" onsubmit="send_sms('A-Team-Roofing-Construction', 'contact-modal', '(832) 392-6986')">
+                <form id="contactModal" class="flex flex-col flex-grow overflow-hidden sm:w-full" onsubmit="send_sms('A-Team-Roofing-Construction', 'contact-modal', deobfuscateNumber('(832) 392-6986'))">
                     <div
                       class="flex flex-col flex-shrink-1 h-auto sm:h-full overflow-y-auto overflow-x-hidden pt-6 pb-4"
                     >
@@ -4842,7 +4789,7 @@ function filterGalleryByDataId(filter) {
     
 
     
-
+    
     <script>
         window.addEventListener("load", function() {
             setTimeout(function() {
@@ -4852,6 +4799,49 @@ function filterGalleryByDataId(filter) {
             }, 5000);
         });
     </script>
+    
+    <script>
+  /**
+   * Phone number obfuscation to prevent bot scraping
+   * Decodes phone numbers from data attributes and initiates calls
+   */
+  function deobfuscateNumber(number) {
+    const isObfuscated = "False" === "True";
+    if (!isObfuscated) {
+      return number;
+    }
+    const binaryPD = atob(number);
+    const bytesPD = Uint8Array.from(binaryPD, (c) => c.charCodeAt(0));
+    const decodedPD = new TextDecoder("utf-8").decode(bytesPD);
+    const phone = decodedPD.slice(20);
+
+    return phone;
+  }
+
+  function initiateCall(element) {
+    const pref = "tel:";
+
+    try {
+      const pd = element.getAttribute("data-phone");
+      if (!pd) {
+        console.error("No phone number found on element to call");
+        return;
+      }
+      const phone = deobfuscateNumber(pd);
+
+      window.location.href = pref + phone;
+    } catch (error) {
+      console.error("Error:", error);
+
+      // Try calling the phone number
+      const fallbackPhone = element.getAttribute("data-phone");
+      if (fallbackPhone) {
+        window.location.href = pref + fallbackPhone.replace(/[^0-9]/g, "");
+      }
+    }
+  }
+</script>
+
 </body>
 
 </html>

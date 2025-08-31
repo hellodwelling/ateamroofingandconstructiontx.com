@@ -538,15 +538,15 @@
                     </div>
                     <div class="inline-flex w-full sm:w-auto">
                         
-                        <div onclick="postCtaClick('call')" class="inline-flex w-full sm:w-auto">
-                            <a
-                                target = "_blank" 
-                                href="tel:(832) 392-6986"
+                        <div class="inline-flex w-full sm:w-auto">
+                            <button
+                                data-phone="(832) 392-6986" 
+                                onclick="initiateCall(this); postCtaClick('call')"
                                 :class="{'scale-100': !scrolledFromTop, 'scale-100': scrolledFromTop}"
                                 class="cta_call_conversion inline-flex items-center justify-center w-full px-5 py-3 whitespace-nowrap text-base font-medium transition bg-white border-2 rounded-md  hover:bg-primary hover:bg-opacity-10 focus:outline-none focus:ring-2 ring-primary ring-opacity-75 ring-offset-2 sm:w-auto text-primary border-primary"
                                 >
                                 Call Now
-                            </a>
+                            </button>
                         </div>
                         
                     </div>
@@ -776,15 +776,15 @@
                                 
 
                                 
-                                <div onclick="postCtaClick('call')" class="w-full">
-                                    <a
-                                        target = "_blank"
-                                        href="tel:(832) 392-6986"
+                                <div class="w-full">
+                                    <button
+                                        data-phone="(832) 392-6986" 
+                                        onclick="initiateCall(this); postCtaClick('call')"
                                         :class="{'scale-100': !scrolledFromTop, 'scale-100': scrolledFromTop}"
                                         class="cta_call_conversion inline-flex items-center justify-center w-full px-5 py-3 text-base font-medium transition bg-white rounded-md  hover:bg-primary hover:bg-opacity-10 hover:text-white focus:outline-none focus:ring-2 text-primary my-2"
                                         >
                                         Call Now
-                                    </a>
+                                    </button>
                                 </div>
                                  
                             
@@ -1795,7 +1795,7 @@
                 </div>
                 <div id="error-state-modal" style="padding-left: 24px; padding-right: 24px;"></div>
 
-                <form id="contactModal" class="flex flex-col flex-grow overflow-hidden sm:w-full" onsubmit="send_sms('A-Team-Roofing-Construction', 'contact-modal', '(832) 392-6986')">
+                <form id="contactModal" class="flex flex-col flex-grow overflow-hidden sm:w-full" onsubmit="send_sms('A-Team-Roofing-Construction', 'contact-modal', deobfuscateNumber('(832) 392-6986'))">
                     <div
                       class="flex flex-col flex-shrink-1 h-auto sm:h-full overflow-y-auto overflow-x-hidden pt-6 pb-4"
                     >
@@ -2312,14 +2312,14 @@
             
                 
             
-            <div onclick="postCtaClick('call')" class="inline-flex w-full ml-3 sm:w-auto">
-                <a
-                    target = "_blank" 
-                    href="tel:(832) 392-6986"
+            <div class="inline-flex w-full ml-3 sm:w-auto">
+                <button
+                    data-phone="(832) 392-6986" 
+                    onclick="initiateCall(this); postCtaClick('call')"
                     class="cta_call_conversion inline-flex items-center justify-center w-full px-5 py-3 text-base font-medium transition bg-white border-2 rounded-md  sm:py-4 sm:px-10 hover:bg-primary hover:bg-opacity-10 focus:outline-none focus:ring-2 ring-primary ring-offset-2 ring-opacity-75 sm:w-auto text-primary border-primary"
                 >
                     Call Us
-                </a>
+                </button>
             </div>
             
         </div>
@@ -2593,7 +2593,7 @@
     
 
     
-
+    
     <script>
         window.addEventListener("load", function() {
             setTimeout(function() {
@@ -2603,6 +2603,49 @@
             }, 5000);
         });
     </script>
+    
+    <script>
+  /**
+   * Phone number obfuscation to prevent bot scraping
+   * Decodes phone numbers from data attributes and initiates calls
+   */
+  function deobfuscateNumber(number) {
+    const isObfuscated = "False" === "True";
+    if (!isObfuscated) {
+      return number;
+    }
+    const binaryPD = atob(number);
+    const bytesPD = Uint8Array.from(binaryPD, (c) => c.charCodeAt(0));
+    const decodedPD = new TextDecoder("utf-8").decode(bytesPD);
+    const phone = decodedPD.slice(20);
+
+    return phone;
+  }
+
+  function initiateCall(element) {
+    const pref = "tel:";
+
+    try {
+      const pd = element.getAttribute("data-phone");
+      if (!pd) {
+        console.error("No phone number found on element to call");
+        return;
+      }
+      const phone = deobfuscateNumber(pd);
+
+      window.location.href = pref + phone;
+    } catch (error) {
+      console.error("Error:", error);
+
+      // Try calling the phone number
+      const fallbackPhone = element.getAttribute("data-phone");
+      if (fallbackPhone) {
+        window.location.href = pref + fallbackPhone.replace(/[^0-9]/g, "");
+      }
+    }
+  }
+</script>
+
 </body>
 
 </html>
